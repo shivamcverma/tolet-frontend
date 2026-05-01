@@ -1,5 +1,4 @@
-const API_URL = 'http://127.0.0.1:8000/api';
-
+const api = import.meta.env.VITE_API_URL;
 export const fetchAPI = async (endpoint, options = {}) => {
   const token = localStorage.getItem('access_token');
   const headers = {
@@ -8,7 +7,7 @@ export const fetchAPI = async (endpoint, options = {}) => {
     ...options.headers,
   };
 
-  const response = await fetch(`${API_URL}${endpoint}`, {
+  const response = await fetch(`${api}${endpoint}`, {
     ...options,
     headers,
   });

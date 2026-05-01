@@ -7,9 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import AddProperty from './pages/AddProperty';
-import dotenv from 'dotenv';
-
-dotenv.config();
+ 
 function App() {
   return (
     <Router>
