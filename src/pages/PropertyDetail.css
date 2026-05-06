@@ -1,0 +1,267 @@
+.property-detail-page {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+  
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+  }
+  
+  /* Main Content */
+  .detail-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .image-gallery {
+    padding: 1rem;
+    overflow: hidden;
+  }
+  
+  .main-image-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  
+  .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .main-image:hover {
+    transform: scale(1.02);
+  }
+  
+  .thumbnail-list {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .thumbnail {
+    flex: 0 0 100px;
+    height: 70px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .thumbnail.active {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+  }
+  
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .property-info-section {
+    padding: 2.5rem;
+  }
+  
+  .property-info-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+  
+  .info-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+  }
+  
+  .description-box {
+    margin-bottom: 2.5rem;
+  }
+  
+  .description-box h3, .amenities-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+  
+  .description-box p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .amenity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    color: var(--text-color);
+  }
+  
+  /* Sidebar */
+  .detail-sidebar {
+    position: relative;
+  }
+  
+  .sticky-sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .booking-card {
+    padding: 2rem;
+  }
+  
+  .price-tag {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  
+  .period {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  
+  .availability-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 1.5rem 0;
+  }
+  
+  .owner-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .owner-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .owner-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .owner-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  .owner-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  
+  .contact-btn {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 12px;
+  }
+  
+  .safety-tip {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #ff9800;
+    line-height: 1.4;
+  }
+  
+  .quick-actions {
+    padding: 1.5rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .detail-layout {
+      grid-template-columns: 1fr;
+    }
+    
+    .sticky-sidebar {
+      position: static;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .main-image-container {
+      height: 300px;
+    }
+    
+    .property-info-section {
+      padding: 1.5rem;
+    }
+    
+    .property-info-section h1 {
+      font-size: 1.8rem;
+    }
+    
+    .info-meta {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
