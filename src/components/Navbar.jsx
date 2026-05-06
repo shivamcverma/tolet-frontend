@@ -6,7 +6,7 @@ import './Navbar.css';
 const Navbar = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('access_token');
-  const userRole = localStorage.getItem('user_role'); // We can store this during login
+  const userRole = localStorage.getItem('user_role'); // We can store this during 
 
   const handleLogout = () => {
     localStorage.removeItem('access_token');
