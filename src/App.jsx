@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import AddProperty from './pages/AddProperty';
- 
+
 function App() {
   return (
     <Router>
