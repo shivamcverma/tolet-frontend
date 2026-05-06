@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, IndianRupee, Phone, CheckCircle2, Wifi, Car, Shield, Building2, Calendar } from 'lucide-react';
+import { MapPin, IndianRupee, Phone, CheckCircle2, Wifi, Car, Shield, Building2, Calendar, User } from 'lucide-react';
 import { fetchAPI, API_BASE_URL } from '../api';
 import './PropertyDetail.css';
 
