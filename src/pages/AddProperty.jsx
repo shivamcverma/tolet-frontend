@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Building2, Upload, MapPin } from 'lucide-react';
-import { fetchAPI } from '../api';
+import { fetchAPI, api } from '../api';
 import './AddProperty.css';
 
 const AddProperty = () => {
@@ -49,7 +49,7 @@ const AddProperty = () => {
     });
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/properties/', {
+      const response = await fetch(`${api}/properties/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('access_token')}`
@@ -86,12 +86,12 @@ const AddProperty = () => {
           <div className="form-grid">
             <div className="form-group span-2">
               <label className="form-label">Property Title</label>
-              <input 
-                type="text" 
-                name="title" 
-                className="form-input" 
-                placeholder="e.g. Luxury 2BHK Flat" 
-                required 
+              <input
+                type="text"
+                name="title"
+                className="form-input"
+                placeholder="e.g. Luxury 2BHK Flat"
+                required
                 value={formData.title}
                 onChange={handleChange}
               />
@@ -99,10 +99,10 @@ const AddProperty = () => {
 
             <div className="form-group span-2">
               <label className="form-label">Description</label>
-              <textarea 
-                name="description" 
-                className="form-input" 
-                rows="3" 
+              <textarea
+                name="description"
+                className="form-input"
+                rows="3"
                 placeholder="Detailed description of the property..."
                 required
                 value={formData.description}
@@ -112,11 +112,11 @@ const AddProperty = () => {
 
             <div className="form-group">
               <label className="form-label">Monthly Rent (₹)</label>
-              <input 
-                type="number" 
-                name="rent" 
-                className="form-input" 
-                required 
+              <input
+                type="number"
+                name="rent"
+                className="form-input"
+                required
                 value={formData.rent}
                 onChange={handleChange}
               />
@@ -124,9 +124,9 @@ const AddProperty = () => {
 
             <div className="form-group">
               <label className="form-label">Property Type</label>
-              <select 
-                name="property_type" 
-                className="form-input" 
+              <select
+                name="property_type"
+                className="form-input"
                 value={formData.property_type}
                 onChange={handleChange}
               >
@@ -138,11 +138,11 @@ const AddProperty = () => {
 
             <div className="form-group">
               <label className="form-label">City</label>
-              <input 
-                type="text" 
-                name="city" 
-                className="form-input" 
-                required 
+              <input
+                type="text"
+                name="city"
+                className="form-input"
+                required
                 value={formData.city}
                 onChange={handleChange}
               />
@@ -150,11 +150,11 @@ const AddProperty = () => {
 
             <div className="form-group">
               <label className="form-label">Area</label>
-              <input 
-                type="text" 
-                name="area" 
-                className="form-input" 
-                required 
+              <input
+                type="text"
+                name="area"
+                className="form-input"
+                required
                 value={formData.area}
                 onChange={handleChange}
               />
@@ -162,10 +162,10 @@ const AddProperty = () => {
 
             <div className="form-group">
               <label className="form-label">Latitude</label>
-              <input 
-                type="text" 
-                name="latitude" 
-                className="form-input" 
+              <input
+                type="text"
+                name="latitude"
+                className="form-input"
                 value={formData.latitude}
                 onChange={handleChange}
               />
@@ -173,10 +173,10 @@ const AddProperty = () => {
 
             <div className="form-group">
               <label className="form-label">Longitude</label>
-              <input 
-                type="text" 
-                name="longitude" 
-                className="form-input" 
+              <input
+                type="text"
+                name="longitude"
+                className="form-input"
                 value={formData.longitude}
                 onChange={handleChange}
               />
@@ -184,10 +184,10 @@ const AddProperty = () => {
 
             <div className="form-group span-2">
               <label className="form-label">Amenities (JSON Format)</label>
-              <input 
-                type="text" 
-                name="amenities" 
-                className="form-input" 
+              <input
+                type="text"
+                name="amenities"
+                className="form-input"
                 value={formData.amenities}
                 onChange={handleChange}
               />
@@ -196,10 +196,10 @@ const AddProperty = () => {
             <div className="form-group span-2">
               <label className="form-label">Property Images</label>
               <div className="file-upload-box">
-                <input 
-                  type="file" 
-                  multiple 
-                  accept="image/*" 
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
                   onChange={handleImageChange}
                   id="image-upload"
                 />
@@ -212,8 +212,8 @@ const AddProperty = () => {
           </div>
 
           <div className="form-actions">
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-secondary"
               onClick={() => navigate('/dashboard')}
             >

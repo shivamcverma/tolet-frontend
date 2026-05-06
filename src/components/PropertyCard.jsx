@@ -1,13 +1,17 @@
 import React from 'react';
 import { MapPin, IndianRupee, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { API_BASE_URL } from '../api';
 import './PropertyCard.css';
 
 const PropertyCard = ({ property }) => {
   const defaultImage = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-  const imageSrc = property.images && property.images.length > 0 
-    ? property.images[0].image 
-    : defaultImage;
+  
+  let imageSrc = defaultImage;
+  if (property.images && property.images.length > 0) {
+    const imgPath = property.images[0].image;
+    imageSrc = imgPath.startsWith('http') ? imgPath : `${API_BASE_URL}${imgPath}`;
+  }
 
   return (
     <Link to={`/property/${property.id}`} className="property-card glass-card">

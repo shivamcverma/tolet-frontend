@@ -1,4 +1,5 @@
-const api = import.meta.env.VITE_API_URL;
+export const API_BASE_URL = import.meta.env.VITE_API_URL.replace('/api', '');
+export const api = import.meta.env.VITE_API_URL;
 export const fetchAPI = async (endpoint, options = {}) => {
   const token = localStorage.getItem('access_token');
   const headers = {
