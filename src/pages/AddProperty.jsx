@@ -58,13 +58,17 @@ const AddProperty = () => {
         body: data
       });
 
+      const responseData = await response.json();
+      
       if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(JSON.stringify(errData));
+        console.error('API Error Response:', response.status, responseData);
+        throw new Error(JSON.stringify(responseData));
       }
 
+      console.log('Property created successfully:', responseData);
       navigate('/dashboard');
     } catch (err) {
+      console.error('Error adding property:', err);
       setError(err.message);
     } finally {
       setLoading(false);

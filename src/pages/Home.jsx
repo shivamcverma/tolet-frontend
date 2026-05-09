@@ -27,9 +27,8 @@ const Home = () => {
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="hero-overlay"></div>
         <div className="container hero-content">
-          <h1 className="hero-title">Find Your Perfect <span className="text-primary">Home</span></h1>
+          <h1 className="hero-title">Find Your Perfect <span className="text-gradient">Home</span></h1>
           <p className="hero-subtitle">Discover premium Rooms, PGs, and Flats in your city</p>
           
           <div className="search-box glass-card">
@@ -44,7 +43,7 @@ const Home = () => {
               />
             </div>
             <button className="btn btn-primary search-btn">
-              <Search size={20} />
+              <Search size={22} />
               <span>Search</span>
             </button>
           </div>
