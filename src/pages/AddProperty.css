@@ -79,3 +79,18 @@
     grid-column: span 1;
   }
 }
+
+@media (max-width: 480px) {
+  .add-property-page {
+    padding: 1.5rem 1rem;
+  }
+  
+  .add-property-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .form-header h1 {
+    font-size: 1.75rem;
+  }
+}
+

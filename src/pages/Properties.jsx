@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, MapPin, SlidersHorizontal } from 'lucide-react';
+import { Search, MapPin, SlidersHorizontal, X, Filter } from 'lucide-react';
 import { fetchAPI } from '../api';
 import PropertyCard from '../components/PropertyCard';
 import './Properties.css';
@@ -7,6 +7,7 @@ import './Properties.css';
 const Properties = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
   
   // Filters state
   const [filters, setFilters] = useState({
@@ -48,21 +49,34 @@ const Properties = () => {
   const applyFilters = (e) => {
     e.preventDefault();
     loadProperties();
+    setShowFilters(false);
   };
+
+  const toggleFilters = () => setShowFilters(!showFilters);
 
   return (
     <div className="properties-page container">
-      <div className="properties-header">
-        <h1>Find Properties</h1>
+      <div className="properties-header animate-fade">
+        <h1>Find <span className="text-gradient">Properties</span></h1>
         <p>Browse our extensive list of premium rooms, PGs, and flats.</p>
+      </div>
+
+      <div className="mobile-filter-toggle show-only-mobile">
+        <button className="btn btn-secondary w-full" onClick={toggleFilters}>
+          {showFilters ? <X size={20} /> : <Filter size={20} />}
+          {showFilters ? 'Close Filters' : 'Filter & Search'}
+        </button>
       </div>
 
       <div className="properties-layout">
         {/* Sidebar Filters */}
-        <aside className="filters-sidebar glass-card">
+        <aside className={`filters-sidebar glass-card ${showFilters ? 'mobile-active' : ''}`}>
           <div className="filters-header">
             <SlidersHorizontal size={20} />
             <h3>Filters</h3>
+            <button className="close-filters show-only-mobile" onClick={() => setShowFilters(false)}>
+              <X size={24} />
+            </button>
           </div>
           
           <form onSubmit={applyFilters} className="filters-form">
@@ -128,7 +142,7 @@ const Properties = () => {
         {/* Listings */}
         <main className="listings-container">
           {loading ? (
-            <div className="loading-state">Loading properties...</div>
+            <div className="loading-state glass-card">Loading properties...</div>
           ) : properties.length === 0 ? (
             <div className="empty-state glass-card">
               <Search size={48} className="empty-icon" />
@@ -153,8 +167,11 @@ const Properties = () => {
           )}
         </main>
       </div>
+
+      {showFilters && <div className="mobile-overlay" onClick={() => setShowFilters(false)}></div>}
     </div>
   );
 };
 
 export default Properties;
+

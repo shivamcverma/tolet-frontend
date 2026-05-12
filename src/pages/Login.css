@@ -75,7 +75,23 @@
 }
 
 @media (max-width: 480px) {
+  .auth-page {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
   .auth-card {
-    padding: 2rem;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .auth-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .auth-icon-container {
+    width: 50px;
+    height: 50px;
   }
 }
+

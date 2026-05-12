@@ -74,6 +74,37 @@ button {
   padding: 0 2rem;
 }
 
+/* Responsive Utilities */
+.hide-on-mobile {
+  display: block;
+}
+
+.show-only-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  .show-only-mobile {
+    display: block !important;
+  }
+  
+  :root {
+    --radius-xl: 20px; /* Smaller radius on mobile */
+  }
+  
+  body {
+    font-size: 14px;
+  }
+}
+
 /* Typography Utilities */
 .text-gradient {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -190,7 +221,8 @@ button {
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 1.25rem;
+  .grid {
+    gap: 1.5rem;
   }
 }
+
