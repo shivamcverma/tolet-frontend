@@ -12,7 +12,7 @@ const Home = () => {
     const loadFeatured = async () => {
       try {
         const data = await fetchAPI('/properties/');
-        // Just take first 3 for home page
+
         if (data && data.results) {
           setFeaturedProperties(data.results.slice(0, 3));
         }
@@ -20,50 +20,91 @@ const Home = () => {
         console.error("Failed to load properties", err);
       }
     };
+
     loadFeatured();
   }, []);
 
+  // SEARCH FUNCTION
+  const handleSearch = async () => {
+    if (!searchQuery.trim()) return;
+
+    try {
+      const data = await fetchAPI(
+        `/properties/?city=${searchQuery}`
+      );
+
+      if (data && data.results) {
+        setFeaturedProperties(data.results);
+      }
+    } catch (err) {
+      console.error("Search failed", err);
+    }
+  };
+
   return (
     <div className="home-page">
+
       {/* Hero Section */}
       <section className="hero-section">
         <div className="container hero-content">
-          <h1 className="hero-title">Find Your Perfect <span className="text-gradient">Home</span></h1>
-          <p className="hero-subtitle">Discover premium Rooms, PGs, and Flats in your city</p>
-          
+
+          <h1 className="hero-title">
+            Find Your Perfect <span className="text-gradient">Home</span>
+          </h1>
+
+          <p className="hero-subtitle">
+            Discover premium Rooms, PGs, and Flats in your city
+          </p>
+
           <div className="search-box glass-card">
+
             <div className="search-input-group">
               <MapPin className="search-icon" />
-              <input 
-                type="text" 
-                placeholder="Enter city or area..." 
+
+              <input
+                type="text"
+                placeholder="Enter city or area..."
                 className="hero-search-input"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSearch();
+                  }
+                }}
               />
             </div>
-            <button className="btn btn-primary search-btn">
+
+            <button
+              className="btn btn-primary search-btn"
+              onClick={handleSearch}
+            >
               <Search size={22} />
               <span>Search</span>
             </button>
+
           </div>
         </div>
       </section>
 
       {/* Featured Properties */}
       <section className="featured-section container">
+
         <div className="section-header">
           <h2>Featured Listings</h2>
           <p>Hand-picked premium properties for you</p>
         </div>
-        
+
         <div className="property-grid">
-          {featuredProperties.map(prop => (
+
+          {featuredProperties.map((prop) => (
             <PropertyCard key={prop.id} property={prop} />
           ))}
+
           {featuredProperties.length === 0 && (
             <p>No featured properties found.</p>
           )}
+
         </div>
       </section>
     </div>
