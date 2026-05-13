@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Building2, Upload, MapPin } from 'lucide-react';
 import { fetchAPI, api } from '../api';
-import './AddProperty.css';
 
 const AddProperty = () => {
   const navigate = useNavigate();
@@ -76,20 +75,20 @@ const AddProperty = () => {
   };
 
   return (
-    <div className="add-property-page container">
-      <div className="add-property-card glass-card">
-        <div className="form-header">
-          <Building2 size={32} className="text-primary" />
-          <h1>Add New Property</h1>
-          <p>Fill in the details to list your property</p>
+    <div className="py-12 px-4 md:px-6 flex justify-center container mx-auto max-w-[1400px]">
+      <div className="glass-card w-full max-w-[800px] p-6 md:p-12 animate-[fadeIn_0.5s_ease-out]">
+        <div className="text-center mb-10 flex flex-col items-center">
+          <Building2 size={40} className="text-primary mb-2 drop-shadow-[0_2px_8px_rgba(139,92,246,0.3)]" />
+          <h1 className="text-2xl md:text-[2rem] font-bold font-outfit mt-2 mb-2 text-text-main">Add New Property</h1>
+          <p className="text-text-muted">Fill in the details to list your property</p>
         </div>
 
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="bg-rose-500/10 border border-rose-500/20 text-rose-600 p-4 rounded-xl mb-8 text-sm text-center font-medium">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="add-property-form">
-          <div className="form-grid">
-            <div className="form-group span-2">
-              <label className="form-label">Property Title</label>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="sm:col-span-2">
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Property Title</label>
               <input
                 type="text"
                 name="title"
@@ -101,8 +100,8 @@ const AddProperty = () => {
               />
             </div>
 
-            <div className="form-group span-2">
-              <label className="form-label">Description</label>
+            <div className="sm:col-span-2">
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Description</label>
               <textarea
                 name="description"
                 className="form-input"
@@ -114,8 +113,8 @@ const AddProperty = () => {
               ></textarea>
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Monthly Rent (₹)</label>
+            <div>
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Monthly Rent (₹)</label>
               <input
                 type="number"
                 name="rent"
@@ -126,8 +125,8 @@ const AddProperty = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Property Type</label>
+            <div>
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Property Type</label>
               <select
                 name="property_type"
                 className="form-input"
@@ -140,8 +139,8 @@ const AddProperty = () => {
               </select>
             </div>
 
-            <div className="form-group">
-              <label className="form-label">City</label>
+            <div>
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">City</label>
               <input
                 type="text"
                 name="city"
@@ -152,8 +151,8 @@ const AddProperty = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Area</label>
+            <div>
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Area</label>
               <input
                 type="text"
                 name="area"
@@ -164,8 +163,8 @@ const AddProperty = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Latitude</label>
+            <div>
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Latitude</label>
               <input
                 type="text"
                 name="latitude"
@@ -175,8 +174,8 @@ const AddProperty = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Longitude</label>
+            <div>
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Longitude</label>
               <input
                 type="text"
                 name="longitude"
@@ -186,44 +185,45 @@ const AddProperty = () => {
               />
             </div>
 
-            <div className="form-group span-2">
-              <label className="form-label">Amenities (JSON Format)</label>
+            <div className="sm:col-span-2">
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Amenities (JSON Format)</label>
               <input
                 type="text"
                 name="amenities"
-                className="form-input"
+                className="form-input font-mono text-sm"
                 value={formData.amenities}
                 onChange={handleChange}
               />
             </div>
 
-            <div className="form-group span-2">
-              <label className="form-label">Property Images</label>
-              <div className="file-upload-box">
+            <div className="sm:col-span-2">
+              <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Property Images</label>
+              <div className="relative border-2 border-dashed border-black/10 rounded-xl p-8 text-center transition-all duration-300 hover:border-primary hover:bg-primary/5 cursor-pointer">
                 <input
                   type="file"
                   multiple
                   accept="image/*"
                   onChange={handleImageChange}
                   id="image-upload"
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                 />
-                <label htmlFor="image-upload" className="file-label">
-                  <Upload size={24} />
-                  <span>{images.length > 0 ? `${images.length} images selected` : 'Select Images'}</span>
-                </label>
+                <div className="flex flex-col items-center gap-2 text-text-muted">
+                  <Upload size={28} className="mb-2" />
+                  <span className="font-medium">{images.length > 0 ? `${images.length} images selected` : 'Click or drag to select Images'}</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="form-actions">
+          <div className="flex justify-end gap-4 mt-6 pt-6 border-t border-black/5">
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary w-full sm:w-auto"
               onClick={() => navigate('/dashboard')}
             >
               Cancel
             </button>
-            <button type="submit" className="btn btn-primary" disabled={loading}>
+            <button type="submit" className="btn btn-primary w-full sm:w-auto" disabled={loading}>
               {loading ? 'Adding Property...' : 'List Property'}
             </button>
           </div>

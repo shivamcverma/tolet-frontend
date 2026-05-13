@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserPlus } from 'lucide-react';
 import { fetchAPI } from '../api';
-import './Login.css'; // Reuse Login CSS for auth styling
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -54,21 +53,21 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card glass-card" style={{ maxWidth: '500px' }}>
-        <div className="auth-header">
-          <div className="auth-icon-container">
-            <UserPlus size={24} className="auth-icon" />
+    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center py-10 px-4 md:px-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.05)_0%,transparent_70%)]">
+      <div className="glass-card w-full max-w-[500px] p-8 md:p-12 animate-[fadeIn_0.6s_ease-out]">
+        <div className="text-center mb-10">
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-primary/20 text-primary">
+            <UserPlus size={24} />
           </div>
-          <h2>Create an Account</h2>
-          <p>Join ToLet to find or list properties</p>
+          <h2 className="text-[1.75rem] md:text-[2rem] font-bold font-outfit mb-2 text-text-main">Create an Account</h2>
+          <p className="text-text-muted">Join ToLet to find or list properties</p>
         </div>
 
-        {error && <div className="auth-error">{error}</div>}
+        {error && <div className="bg-rose-500/10 border border-rose-500/20 text-rose-600 p-4 rounded-xl mb-8 text-sm text-center font-medium">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="form-group">
-            <label className="form-label">Username</label>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div>
+            <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Username</label>
             <input 
               type="text" 
               name="username" 
@@ -78,8 +77,8 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
-            <label className="form-label">Email</label>
+          <div>
+            <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Email</label>
             <input 
               type="email" 
               name="email" 
@@ -89,8 +88,8 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
-            <label className="form-label">Phone Number</label>
+          <div>
+            <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Phone Number</label>
             <input 
               type="text" 
               name="phone_number" 
@@ -99,8 +98,8 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
-            <label className="form-label">Password</label>
+          <div>
+            <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">Password</label>
             <input 
               type="password" 
               name="password" 
@@ -110,8 +109,8 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
-            <label className="form-label">I am a...</label>
+          <div>
+            <label className="block text-[0.9rem] font-semibold mb-2 text-text-muted uppercase tracking-wider">I am a...</label>
             <select 
               name="role" 
               className="form-input" 
@@ -122,13 +121,13 @@ const Register = () => {
               <option value="PROPERTY_OWNER">Property Owner</option>
             </select>
           </div>
-          <button type="submit" className="btn btn-primary w-full" disabled={loading}>
+          <button type="submit" className="btn btn-primary w-full mt-2" disabled={loading}>
             {loading ? 'Creating Account...' : 'Sign Up'}
           </button>
         </form>
 
-        <div className="auth-footer">
-          <p>Already have an account? <Link to="/login" className="text-primary">Login</Link></p>
+        <div className="mt-10 text-center text-[0.95rem] text-text-muted">
+          <p>Already have an account? <Link to="/login" className="text-primary font-semibold hover:underline">Login</Link></p>
         </div>
       </div>
     </div>
